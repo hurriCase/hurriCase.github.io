@@ -14,32 +14,37 @@
             padding: 20px;
             background: #f5f5f5;
         }
-
         .container {
             background: white;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
         .form-group {
             margin-bottom: 1rem;
+            position: relative;
         }
-
         label {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-
-        input, textarea {
+        input[type="text"],
+        input[type="email"],
+        textarea {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-bottom: 0.5rem;
+            resize: vertical;
         }
-
+        input[type="checkbox"] {
+            margin: 0;
+            flex-shrink: 0;
+        }
         button {
             background: #dc2626;
             color: white;
@@ -49,16 +54,13 @@
             cursor: pointer;
             font-weight: 500;
         }
-
         button:hover {
             background: #b91c1c;
         }
-
         .error {
             color: #dc2626;
             font-size: 0.875rem;
         }
-
         .success {
             color: #16a34a;
             font-size: 0.875rem;
@@ -69,7 +71,7 @@
 <div class="container">
     <h1>Account Deletion Request</h1>
     <p>Please fill out this form to request deletion of your account and associated data.</p>
-        
+
     <form id="deletionForm">
         <div class="form-group">
             <label for="email">Email Address</label>
@@ -107,29 +109,25 @@
     const emailError = document.getElementById('emailError');
     const successMessage = document.getElementById('successMessage');
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Email validation
         if (!validator.isEmail(emailInput.value)) {
             emailError.textContent = 'Please enter a valid email address';
             return;
         }
         emailError.textContent = '';
 
-        // Collect form data
         const formData = {
             email: emailInput.value,
             username: document.getElementById('username').value,
             reason: document.getElementById('reason').value
         };
 
-        // Send email using mailto link
         const mailtoLink = `mailto:dmitriy.pastanovskiy@gmail.com?subject=Account Deletion Request&body=Username: ${formData.username}%0D%0AEmail: ${formData.email}%0D%0AReason: ${formData.reason}`;
 
         window.location.href = mailtoLink;
 
-        // Show success message
         successMessage.style.display = 'block';
         form.reset();
     });
