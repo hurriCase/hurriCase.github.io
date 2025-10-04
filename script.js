@@ -1,5 +1,6 @@
 ﻿const translations = {
     en: {
+        'full-name': 'Dmitrii Sukharev',
         'job-title': 'Unity Developer',
         'languages-title': 'Languages',
         'russian': 'Russian:',
@@ -42,6 +43,7 @@
         'desc-language': 'App based on my original concept. Built from scratch in close collaboration with a designer.'
     },
     ru: {
+        'full-name': 'Дмитрий Сухарев',
         'job-title': 'Unity Разработчик',
         'languages-title': 'Языки',
         'russian': 'Русский:',
